@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#upsc apc_BR1500MS_a@192.168.10.209
+#upsc apc_BR1500MS_a@192.168.10.209 2>&1 | grep -v '^Init SSL'
 
 import sys
 import subprocess
@@ -46,7 +46,12 @@ for line in data.split('\n'):
     d = line.split(':')
     ddict[d[0]] = d[1].lstrip()
 
-returndata = "battery_charge:" + ddict['battery.charge'] + " battery_runtime:" + ddict['battery.runtime']
+#returndata = "battery_charge:" + ddict['battery.charge'] + " battery_runtime:" + ddict['battery.runtime']
+returndata = "battery_charge:" + ddict['battery.charge']\
+	 + " input_voltage:" + ddict['input.voltage']\
+	 + " ups_load:" + ddict['ups.load']\
+	 + " ups_realpower_nominal:" + ddict['ups.realpower.nominal']\
+	 + " battery_runtime:" + ddict['battery.runtime']
 print(returndata)
 
 logger.info("Script ended: " + str(datetime.now()) + " -- Output -- " + returndata)
