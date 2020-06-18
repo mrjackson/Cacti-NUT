@@ -115,8 +115,8 @@ returndata = "input_transfer_low:" + ddict['input.transfer.low']\
     + " battery_charge:" + ddict['battery.charge']\
     + " ups_load:" + ddict['ups.load']\
     + " ups_status:" + ddict['ups.status']\
-    + " ups_realpower_nominal:" + ddict['ups.realpower']\
-    + " ups_realpower:" + ddict['ups.realpower.nominal']
+    + " ups_realpower:" + ddict['ups.realpower']\
+    + " ups_realpower_nominal:" + ddict['ups.realpower.nominal']
 
 print(returndata)
 
