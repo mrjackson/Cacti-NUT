@@ -85,6 +85,14 @@ try:
 except:
     ddict['ups.load'] = "0"
 try:
+    ddict['ups.status']
+    if ddict['ups.status'] == "OL":
+        ddict['ups.status'] = "0"
+    else:
+        ddict['ups.status'] = "1"
+except:
+    ddict['ups.status'] = "0"
+try:
     ddict['ups.realpower.nominal']
 except:
     ddict['ups.realpower.nominal'] = "0"
@@ -106,6 +114,7 @@ returndata = "input_transfer_low:" + ddict['input.transfer.low']\
     + " battery_runtime_low:" + ddict['battery.runtime.low']\
     + " battery_charge:" + ddict['battery.charge']\
     + " ups_load:" + ddict['ups.load']\
+    + " ups_status:" + ddict['ups.status']\
     + " ups_realpower_nominal:" + ddict['ups.realpower']\
     + " ups_realpower:" + ddict['ups.realpower.nominal']
 
