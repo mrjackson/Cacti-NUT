@@ -46,12 +46,70 @@ for line in data.split('\n'):
     d = line.split(':')
     ddict[d[0]] = d[1].lstrip()
 
+try:
+    ddict['input.voltage']
+except:
+    ddict['input.voltage'] = "0"
+try:
+    ddict['input.frequency']
+except:
+    ddict['input.frequency'] = "0"
+try:
+    ddict['input.transfer.low']
+except:
+    ddict['input.transfer.low'] = "0"
+try:
+    ddict['input.transfer.high']
+except:
+    ddict['input.transfer.high'] = "0"
+
+try:
+    ddict['battery.runtime']
+except:
+    ddict['battery.runtime'] = "0"
+try:
+    ddict['battery.voltage']
+except:
+    ddict['battery.voltage'] = "0"
+try:
+    ddict['battery.runtime.low']
+except:
+    ddict['battery.runtime.low'] = "0"
+try:
+    ddict['battery.charge']
+except:
+    ddict['battery.charge'] = "0"
+
+try:
+    ddict['ups.load']
+except:
+    ddict['ups.load'] = "0"
+try:
+    ddict['ups.realpower.nominal']
+except:
+    ddict['ups.realpower.nominal'] = "0"
+try:
+    ddict['ups.realpower']
+except:
+    ddict['ups.realpower'] = str(int(ddict['ups.realpower.nominal']) * (int(ddict['ups.load'])/100))
+
+
+#ups_power = (int(ddict['ups.realpower.nominal']) * (int(ddict['ups.load'])/100))
+
 #returndata = "battery_charge:" + ddict['battery.charge'] + " battery_runtime:" + ddict['battery.runtime']
-returndata = "battery_charge:" + ddict['battery.charge']\
-	 + " input_voltage:" + ddict['input.voltage']\
-	 + " ups_load:" + ddict['ups.load']\
-	 + " ups_realpower_nominal:" + ddict['ups.realpower.nominal']\
-	 + " battery_runtime:" + ddict['battery.runtime']
+returndata = "input_transfer_low:" + ddict['input.transfer.low']\
+    + " input_transfer_high:" + ddict['input.transfer.high']\
+    + " input_voltage:" + ddict['input.voltage']\
+    + " input_frequency:" + ddict['input.frequency']\
+    + " battery_runtime:" + ddict['battery.runtime']\
+    + " battery_voltage:" + ddict['battery.voltage']\
+    + " battery_runtime_low:" + ddict['battery.runtime.low']\
+    + " battery_charge:" + ddict['battery.charge']\
+    + " ups_load:" + ddict['ups.load']\
+    + " ups_realpower_nominal:" + ddict['ups.realpower']\
+    + " ups_realpower:" + ddict['ups.realpower.nominal']
+
 print(returndata)
 
 logger.info("Script ended: " + str(datetime.now()) + " -- Output -- " + returndata)
+
