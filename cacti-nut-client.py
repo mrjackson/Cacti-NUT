@@ -49,36 +49,36 @@ for line in data.split('\n'):
 try:
     ddict['input.voltage']
 except:
-    ddict['input.voltage'] = "0"
+    ddict['input.voltage'] = "U"
 try:
     ddict['input.frequency']
 except:
-    ddict['input.frequency'] = "0"
+    ddict['input.frequency'] = "U"
 try:
     ddict['input.transfer.low']
 except:
-    ddict['input.transfer.low'] = "0"
+    ddict['input.transfer.low'] = "U"
 try:
     ddict['input.transfer.high']
 except:
-    ddict['input.transfer.high'] = "0"
+    ddict['input.transfer.high'] = "U"
 
 try:
     ddict['battery.runtime']
 except:
-    ddict['battery.runtime'] = "0"
+    ddict['battery.runtime'] = "U"
 try:
     ddict['battery.voltage']
 except:
-    ddict['battery.voltage'] = "0"
+    ddict['battery.voltage'] = "U"
 try:
     ddict['battery.runtime.low']
 except:
-    ddict['battery.runtime.low'] = "0"
+    ddict['battery.runtime.low'] = "U"
 try:
     ddict['battery.charge']
 except:
-    ddict['battery.charge'] = "0"
+    ddict['battery.charge'] = "U"
 
 try:
     ddict['ups.load']
@@ -91,15 +91,18 @@ try:
     else:
         ddict['ups.status'] = "1"
 except:
-    ddict['ups.status'] = "0"
+    ddict['ups.status'] = "U"
 try:
     ddict['ups.realpower.nominal']
 except:
-    ddict['ups.realpower.nominal'] = "0"
+    ddict['ups.realpower.nominal'] = "U"
 try:
     ddict['ups.realpower']
 except:
-    ddict['ups.realpower'] = str(int(ddict['ups.realpower.nominal']) * (int(ddict['ups.load'])/100))
+    try:
+        ddict['ups.realpower'] = str(int(ddict['ups.realpower.nominal']) * (int(ddict['ups.load'])/100))
+    except:
+        ddict['ups.realpower'] = "U"
 
 
 #ups_power = (int(ddict['ups.realpower.nominal']) * (int(ddict['ups.load'])/100))
