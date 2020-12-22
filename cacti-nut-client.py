@@ -103,6 +103,19 @@ except:
         ddict['ups.realpower'] = str(int(ddict['ups.realpower.nominal']) * (int(ddict['ups.load'])/100))
     except:
         ddict['ups.realpower'] = "U"
+try:
+    ddict['ups.power.nominal']
+except:
+    ddict['ups.power.nominal'] = "U"
+try:
+    ddict['ups.power']
+except:
+    try:
+        ddict['ups.power'] = str(int(ddict['ups.power.nominal']) * (int(ddict['ups.load'])/100))
+    except:
+        ddict['ups.power'] = "U"
+
+
 
 
 #ups_power = (int(ddict['ups.realpower.nominal']) * (int(ddict['ups.load'])/100))
@@ -118,6 +131,8 @@ returndata = "input_transfer_low:" + ddict['input.transfer.low']\
     + " battery_charge:" + ddict['battery.charge']\
     + " ups_load:" + ddict['ups.load']\
     + " ups_status:" + ddict['ups.status']\
+    + " ups_power:" + ddict['ups.power']\
+    + " ups_power_nominal:" + ddict['ups.power.nominal']\
     + " ups_realpower:" + ddict['ups.realpower']\
     + " ups_realpower_nominal:" + ddict['ups.realpower.nominal']
 
