@@ -88,8 +88,12 @@ try:
     ddict['ups.status']
     if ddict['ups.status'] == "OL":
         ddict['ups.status'] = "0"
-    else:
+    elif ddict['ups.status'] == "OL CHRG":
         ddict['ups.status'] = "1"
+    elif ddict['ups.status'] == "OB DISCHRG":
+        ddict['ups.status'] = "2"
+    else:
+        ddict['ups.status'] = "3"
 except:
     ddict['ups.status'] = "U"
 try:
